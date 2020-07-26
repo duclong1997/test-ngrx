@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 
 export const metaReducers: MetaReducer<any>[] = [debug];
 
-// console.log all actions
+// log all actions
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
     console.log('state', state);
