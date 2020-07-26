@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Product } from './../../models/product.model';
+
 // define actions
 export enum EProductActions {
   LOAD_PRODUCT = '[product] load product',
