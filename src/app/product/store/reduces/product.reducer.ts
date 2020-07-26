@@ -1,5 +1,6 @@
-import { EProductActions, ProductActionType } from '../actions/product.action';
+import { EProductActions } from '../actions/product.action';
 import { Product } from './../../models/product.model';
+import { Action } from '@ngrx/store';
 
 // state
 export interface ProductState {
@@ -18,8 +19,9 @@ export const initProductState: ProductState = {
 // reducer (update)
 export function reducer(
   state = initProductState,
-  actionType: ProductActionType
+  actionType: Action
 ): ProductState {
+  console.log('xxx', actionType);
   switch (actionType.type) {
     case EProductActions.LOAD_PRODUCT:
       return { ...state, loading: true, loaded: false };
