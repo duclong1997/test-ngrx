@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
+import { Action } from '@ngrx/store';
+import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { ProductService } from '../services/product.service';
 import {
@@ -18,8 +19,8 @@ export class ProductEffect {
   ) {}
 
   // define effect
-  @Effect()
-  loadProducts$ = this.actions$.pipe(
+  @Effect({ dispatch: false })
+  loadProducts$: Observable<Action> = this.actions$.pipe(
     // define action of effect
     ofType<LoadProduct>(EProductActions.LOAD_PRODUCT),
     switchMap((action) => {
