@@ -8,17 +8,17 @@ export enum EProductActions {
 }
 
 export class LoadProduct implements Action {
-  readonly type: EProductActions.LOAD_PRODUCT;
+  readonly type = EProductActions.LOAD_PRODUCT;
   constructor() {}
 }
 
 export class LoadProductSuccess implements Action {
-  readonly type: EProductActions.LOAD_PRODUCT_SUCCESS;
+  readonly type = EProductActions.LOAD_PRODUCT_SUCCESS;
   constructor(public payload: Product[]) {}
 }
 
 export class LoadProductFail implements Action {
-  readonly type: EProductActions.LOAD_PRODUCT_FAIL;
+  readonly type = EProductActions.LOAD_PRODUCT_FAIL;
   constructor(public payload: string) {}
 }
 

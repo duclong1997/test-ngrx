@@ -19,12 +19,11 @@ export class ProductEffect {
   ) {}
 
   // define effect
-  @Effect({ dispatch: false })
+  @Effect()
   loadProducts$: Observable<Action> = this.actions$.pipe(
     // define action of effect
-    ofType<LoadProduct>(EProductActions.LOAD_PRODUCT),
-    switchMap((action) => {
-      console.log(action);
+    ofType(EProductActions.LOAD_PRODUCT),
+    switchMap(() => {
       // call api
       return this.productService.getProducts().pipe(
         // map -> action sucess

@@ -1,3 +1,4 @@
+import { Product } from './../../models/product.model';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromSelector from '../../store/selectors/product.selector';
@@ -12,6 +13,7 @@ import { LoadProduct } from './../../store/actions/product.action';
 export class ProductsComponent implements OnInit {
   loaded = false;
   loading = false;
+  products: Product[] = [];
   constructor(private store: Store<fromStore.ProductModelState>) {}
 
   ngOnInit(): void {
@@ -26,8 +28,9 @@ export class ProductsComponent implements OnInit {
     // save action
     this.store.dispatch(new LoadProduct());
 
-    this.store.select(fromSelector.getProducts).subscribe((product) => {
-      console.log(product);
+    // data products
+    this.store.select(fromSelector.getProducts).subscribe((products) => {
+      this.products = products;
     });
   }
 }
