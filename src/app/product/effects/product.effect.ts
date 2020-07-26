@@ -6,7 +6,6 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { ProductService } from '../services/product.service';
 import {
   EProductActions,
-  LoadProduct,
   LoadProductFail,
   LoadProductSuccess,
 } from './../store/actions/product.action';
