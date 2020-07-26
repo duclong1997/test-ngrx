@@ -14,10 +14,12 @@ export const getProducts = createSelector(
   getProductState,
   fromReducer.getProducts
 );
+
 export const getLoading = createSelector(
   getProductState,
   fromReducer.getProductLoading
 );
+
 export const getLoaded = createSelector(
   getProductState,
   fromReducer.getProductLoaded

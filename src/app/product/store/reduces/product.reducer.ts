@@ -1,5 +1,6 @@
 import { EProductActions, ProductActionType } from '../actions/product.action';
 import { Product } from './../../models/product.model';
+
 // state
 export interface ProductState {
   data: Product[];
