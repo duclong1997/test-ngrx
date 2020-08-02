@@ -7,3 +7,5 @@ export const getLaborState = createSelector(
 );
 
 export const getData = createSelector(getLaborState, (state) => state.data);
+
+export const getLabor = createSelector(getLaborState, (state) => state.labor);

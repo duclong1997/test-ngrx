@@ -1,6 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { LaborModel } from './../../models/labor.model';
 import {
+  getDetailLabor,
+  getDetailLaborFail,
+  getDetailLaborSucess,
   loadLabor,
   LoadLaborFail,
   loadLaborSuccess,
@@ -11,6 +14,8 @@ export interface LaborState {
   pageSize: number;
   keyword: string;
   data: LaborModel[];
+  labor: LaborModel;
+  id: number;
 }
 
 const initLaborState: LaborState = {
@@ -18,6 +23,14 @@ const initLaborState: LaborState = {
   pageSize: 10,
   keyword: '',
   data: [],
+  id: 0,
+  labor: {
+    id: 0,
+    name: '',
+    title: '',
+    age: 0,
+    gender: 1,
+  },
 };
 
 const laborReducers = createReducer(
@@ -29,6 +42,15 @@ const laborReducers = createReducer(
     return { ...state, data };
   }),
   on(LoadLaborFail, (state) => {
+    return { ...state };
+  }),
+  on(getDetailLabor, (state, { id }) => {
+    return { ...state, id };
+  }),
+  on(getDetailLaborSucess, (state, { labor }) => {
+    return { ...state, labor };
+  }),
+  on(getDetailLaborFail, (state) => {
     return { ...state };
   })
 );
