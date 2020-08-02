@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: 'product',
     loadChildren: () =>
       import('./product/product.module').then((m) => m.ProductModule),
+  },
+  {
+    path: 'labor',
+    loadChildren: () =>
+      import('./labor/labor.module').then((m) => m.LaborModule),
   },
 ];
 
