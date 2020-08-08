@@ -1032,10 +1032,25 @@
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-6.2.0.tgz#0506d612ca6002bd8fa398d006fa2641013e11d4"
   integrity sha512-wqwhnJFyEwvzWQJjXrEt+7oBTSvu2qPbdYvUFYhDVzOJLWB5M7YEhDAkMrfHQJ0pZNBMGr580FqYue+XiURY0Q==
 
+"@ngrx/data@^9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/data/-/data-9.2.0.tgz#89da77c0ce9b1cbbe191db56a675bae97845758a"
+  integrity sha512-rs8nCF1/TS3fAGFpWcybenQUyacieuDQ3kA5w4iqLSwaqIV7qMCw0pRJ0PDUalA8hM/KXJAtWeBo38bwIgsLuA==
+
 "@ngrx/effects@^9.2.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-9.2.0.tgz#155bfcfd528aa993fd19f60f9536385984a80910"
   integrity sha512-8V09zDIPehGpzgfcgyczelovsVYJvDQhN9wHt37K5A+YCG0CI8nj8FmKokHATwv/S62YqFrOVnr/TZacxpDhBw==
+
+"@ngrx/entity@^9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-9.2.0.tgz#4acdd74edf72f7ab061ca9295ee323d1978a4329"
+  integrity sha512-xSnS4EmksfvIobl2KMpljE1RMYuJGq7j5cCb9TnlsXkEc7cUa0TyGviSsxceSpk9WKtKARPR/AcVrVCESucF6Q==
+
+"@ngrx/router-store@^9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-9.2.0.tgz#e84bb25b3480d06605d1006fd50983dd541c7c5d"
+  integrity sha512-thu6aU9YWM64oNEk4Srx/mNSeQ2SPJKlTji8MSzfr06qgCMyPSXZBYlfs8HqY+af3eB7XBEhb/4ew4JJ6xC9zw==
 
 "@ngrx/store@^9.2.0":
   version "9.2.0"
