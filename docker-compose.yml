@@ -1,0 +1,15 @@
+version: "3.7"
+# chưa toàn bộ các container
+services:
+  # name service
+  devapp:
+    # đường dẫn đến file Dockerfile
+    build:
+      # path of Dockerfile
+      context: .
+      dockerfile: dev/Dockerfile
+    ports:
+      - "8000:4200"
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
