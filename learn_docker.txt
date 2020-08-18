@@ -1,0 +1,60 @@
+docker:
+là một dự án mã nguồn mở giúp tự động triển khai các ứng dụng trên linux, macOs, windown vào trong các container ảo hoá.
+giúp việc cấu hình môi trường của sản phẩm trả nên dễ dàng và nhanh gọn hơn.
+Khi ai đó muốn chạy app thì chỉ cần chạy docker mà sẽ không cần phải suy nghĩ về việc cài cắm môi trường cho app nữa vì docker đã giúp
+ta đóng gói những việc đó trong container.
+
+các thành phần:
+-docker engine: dùng để tạo ra docker image và chạy các container.
+-docker hub: giông với git hub là nơi lưu trữ giúp chứa các docker image.
+
+các khái niệm khác:
+-docker machine: tạo ra các docker engine trên máy chủ.
+-docker compose: chạy ứng dụng bằng cách định nghĩa cậu hình các docker container thông qua tệp đã cấu hình
+ví dụ: docker-compose.yml
+docker compose giúp việc thực thi giữa docker image và docker container được diễn ra nhanh hơn khi có sự thay đổi từ phía container.
+-docker image: là một template chỉ cho phép đọc, chứa các cấu hình cần thiết về môi trường để có thể chạy được ứng dụng. docker image
+được sử dùng để tạo lên docker container. docker cho phép chúng ta build, cập nhật các image có sẵn một cách cơ bản nhất, và bạn cũng có 
+tải docker image từ người khác trên docker hub.
+-docker container: là một dạng runtime của các docker image, dùng để làm môi trường chạy ứng dụng, nói 1 cách khác docker container thực
+thi việc run, start, stop, delete ứng dụng được tạo ra từ docker image.
+
+các bước đẩy ứng dụng lên docker:
+-tạo file Dockerfile: mục đích để cấu hình docker cho project
+- tạo image : docker build -t <name-image>
+-check image in docker: docker image ls
+-remove image in docker: docker image rm <image-id>
+
+-create and run container (not exist): docker run -it -p  <port-run>:<port-config> --name <name-container> <name-image>
+
+image:
+- tạo image: docker build -t <name-image>
+-build 1 image từ Dockerfile: docker image build -t <name-image> .
+- xem danh sách các image: docker image ls
+- xoá image: docker image rm <image-id>
+- xem lịch sử của image: docker image history <name-image>
+-xem thông tin chi tiết image: docker image inspect <name-image>
+
+container:
+-tạo container từ 1 image: docker container create --name <name-container>  <image-name>
+- run container (exist): docker container start <name-container>
+- stop container ( is running): docker container stop <name-container> (dừng sau 10s) / docker container kill <name-container>(dừng luôn)
+- hiển thị chi tiết container: docker container inspect <name-container>
+- get all containers running: docker ps/ docker container ps
+- get all containers: docker ps -a / docker container ps -a
+-get log from container: docker container logs <name-container>
+- xoá container: docker container rm <name-container>
+
+dockect-compose: dùng để thực hiện tạo nhiều image, container cùng 1 lúc cho ứng dụng của bạn
+-docker-compose build: sử dụng để build toàn bộ các container trong file docker-compose.yml
+- build riêng docker-compose: docker-compose build <name-service>
+- run các container: docker-compose up
+- delete các container: docker-compose down
+- reset container in docker-compose: docker-compose reset <name-service>
+
+login:
+- đăng nhập docker: docker login
+- commit docker: docker commit <container-id> username/<name-image>
+- push docker: docker push username/<name-image>
+- pull docker: docker pull username/<name-repository>
+- khi push lên và khi pull về name-image = name-repository
