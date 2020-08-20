@@ -1,1 +1,28 @@
 kubernete:
+
+-get node của kubernete: kubectl get nodes
+-check pod: kubectl get pod ( -o wide )
+-check service: kubectl get service
+để có thể tương tác đến pod cần tạo ra Deployment, nó là tầng trừu tượng
+của pod nó là thứ cần được tạo ra
+
+deployment: là nơi dùng để cấu hình 1 container, image sẽ được thực thi trong kubernete
+
+-check các replica: kubectl get replicaset ( dùng để xem các bản sao deployment,
+servive được copy khi file config cấu hình)
+replica cho phép bạn build nhiều bản container giống hệt nhau để khi 1 container có vấn đề
+thì bản kia sẽ được thay thế.
+
+-sửa deployment: kubectl edit deployment name-deployment
+-lấy ra deployment: kubectl get deploymnet ( -o wide )
+-xoá deployment: kubectl delete deployment name-deployment
+-apply file cấu hình để tạo hoặc sửa deployment hoặc service trong kubernete: kubectl apply -f file-name.yaml
+-xoá với file cấu hình : kubectl delete -f file-name.yaml
+
+
+debug:
+-view log pod: kubectl logs name-pod
+
+service:
+-check các service: kubectl get services
+-xem chi tiết service: kubectl describe service name-service

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+# check pod này là Deployment / Service (component)
+kind: Deployment
+metadata:
+  #tên của component
+  name: test-ngnx-deployment
+  # labels: dùng để nói với deployment có thể kết nối hoặc match all labels
+  # đây chính là cách mà deployment biết được toàn bộ các thành phần của nó
+  labels:
+    app: test-ngnx
+# loại cụ thể của component
+spec:
+  # khai báo số bản sao của component này.
+  replicas: 1
+  # selector là thành phần cơ bản để có thể kết nối deployment và service
+  # bởi vì service phải biết loại pods đã registed và thuộc về service
+  selector:
+    matchLabels:
+      app: test-ngnx
+  # config pod
+  template:
+    metadata:
+      labels:
+        app: test-ngnx
+    spec:
+      # config containers
+      containers:
+        # name container
+        - name: test-ngrx-build
+          # image
+          image: test-ngrx
+          # port run pod
+          ports:
+            - containerPort: 8000

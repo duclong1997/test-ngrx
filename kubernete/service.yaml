@@ -1,0 +1,18 @@
+apiVersion: v1
+# khai báo đây là 1 serivce
+kind: Service
+metadata:
+  name: test-ngnx-service
+spec:
+  # connect Deployment và Service thông qua app
+  selector:
+    app: test-ngnx
+  ports:
+    - protocol: TCP
+      port: 80
+      # targetPort (service) map với containerPort (deployment) nơi pod sẽ được run
+      # đây là cổng mà ứng dụng sẽ hiển thị
+      targetPort: 8000
+      # set type loadbalancer cho service được sử dụng trên AWS, google cloud
+      # (nó sẽ tạo ra cloud load balancer cho bạn tự động và bạn sẽ không cần config )
+      # type: LoadBalancer
