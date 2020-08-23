@@ -9,6 +9,7 @@ spec:
     app: test-ngnx
   ports:
     - protocol: TCP
+      # port of service
       port: 80
       # targetPort (service) map với containerPort (deployment) nơi pod sẽ được run
       # đây là cổng mà ứng dụng sẽ hiển thị

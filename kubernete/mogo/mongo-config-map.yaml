@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+matadata:
+  name: mongo-config-map
+data:
+  #key -value (database url and server name is name service chứa db)
+  database_url: mongo-service

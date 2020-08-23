@@ -27,6 +27,7 @@ spec:
       containers:
         # name container
         - name: test-ngrx-repo-kube
+          # có thể sử dụng imagePullPolicy: Never để không cần phải call đến repository trên docker hub
           imagePullPolicy: Always
           # image (image from docker hub) (image: repository)
           image: 19101997/test-ngrx-repository:latest
