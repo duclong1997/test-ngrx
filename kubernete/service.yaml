@@ -14,5 +14,5 @@ spec:
       # đây là cổng mà ứng dụng sẽ hiển thị
       targetPort: 8000
       # set type loadbalancer cho service được sử dụng trên AWS, google cloud
-      # (nó sẽ tạo ra cloud load balancer cho bạn tự động và bạn sẽ không cần config )
+      # (nó sẽ tạo ra cloud load balancer cho bạn tự động và bạn sẽ không cần config)
       # type: LoadBalancer

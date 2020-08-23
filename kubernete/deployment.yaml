@@ -26,9 +26,10 @@ spec:
       # config containers
       containers:
         # name container
-        - name: test-ngrx-build
-          # image
-          image: test-ngrx
+        - name: test-ngrx-repo-kube
+          imagePullPolicy: Always
+          # image (image from docker hub) (image: repository)
+          image: 19101997/test-ngrx-repository:latest
           # port run pod
           ports:
             - containerPort: 8000
