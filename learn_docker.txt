@@ -3,6 +3,14 @@ là một dự án mã nguồn mở giúp tự động triển khai các ứng d
 giúp việc cấu hình môi trường của sản phẩm trả nên dễ dàng và nhanh gọn hơn.
 Khi ai đó muốn chạy app thì chỉ cần chạy docker mà sẽ không cần phải suy nghĩ về việc cài cắm môi trường cho app nữa vì docker đã giúp
 ta đóng gói những việc đó trong container.
+Ngoài ra có docker-compose giúp việc thực hiện từ image -> contianer được diễn ra dễ dàng và gọn nhẹ hơn có thể thực thi nhiều container trong
+cùng container-compose
+
+mục đích:
+giúp có thể bao đóng các cài dặt cả về môi trưỜng và cấu hình của ứng dụng thành một file, dễ dàng cho việc run và set up
+giúp giảm thiểu thời gian cũng như những sai lần khi thực hiện cài đặt
+các gói đã chứa đựng những thông tin cần thiết cả về cấu hình môi trường cũng như cấu hình giúp developer chỉ cần tập trung phát triển sản phầm
+ứng dụng
 
 các thành phần:
 -docker engine: dùng để tạo ra docker image và chạy các container.
@@ -14,7 +22,7 @@ các khái niệm khác:
 ví dụ: docker-compose.yml
 docker compose giúp việc thực thi giữa docker image và docker container được diễn ra nhanh hơn khi có sự thay đổi từ phía container.
 -docker image: là một template chỉ cho phép đọc, chứa các cấu hình cần thiết về môi trường để có thể chạy được ứng dụng. docker image
-được sử dùng để tạo lên docker container. docker cho phép chúng ta build, cập nhật các image có sẵn một cách cơ bản nhất, và bạn cũng có 
+được sử dùng để tạo lên docker container. docker cho phép chúng ta build, cập nhật các image có sẵn một cách cơ bản nhất, và bạn cũng có
 tải docker image từ người khác trên docker hub.
 -docker container: là một dạng runtime của các docker image, dùng để làm môi trường chạy ứng dụng, nói 1 cách khác docker container thực
 thi việc run, start, stop, delete ứng dụng được tạo ra từ docker image.

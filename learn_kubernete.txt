@@ -1,4 +1,8 @@
 kubernete:
+-giúp tạo ra các service quản lý các service có sự liên kết với nhau trên hệ thống ứng dụng micrro service.
+việc tạo các service dựa trên các deployment có bao gồm các container (trên docker hug) giúp các container có thể liên kết và tác động đến nhau.
+tạo thành 1 mạng lưới. ngoài ra có thể loadbalancer giữa các external service và tạo ra nhiều pod để nếu như 1 pod có gặp vấn đề thì pod khác vẫn
+có thể hoạt động thay pod đó. có thể debug và xem logs của các service, pod trên kubectl khi có vấn đề xảy ra với hệ thống.
 
 -get node của kubernete: kubectl get nodes
 -check pod: kubectl get pod ( -o wide )
