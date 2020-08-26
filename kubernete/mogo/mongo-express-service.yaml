@@ -9,7 +9,9 @@ spec:
     type: loadBalancer
   port:
     - protocol: TCP
+      # đây là port để các service tương tác với nhau
       port: 8081
+      # đây là port để service có thể tương tác đến deployment (pod)
       targetPort: 8081
       # this port where this external IP address is opened
       # put in the browser to access the service

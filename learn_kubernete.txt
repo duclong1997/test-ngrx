@@ -30,3 +30,5 @@ debug:
 service:
 -check các service: kubectl get services
 -xem chi tiết service: kubectl describe service name-service
+
+namespace:

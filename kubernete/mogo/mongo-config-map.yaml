@@ -1,7 +1,10 @@
 apiVersion: v1
+#create configMap = create namespace
 kind: ConfigMap
 matadata:
   name: mongo-config-map
+  # config namespace
+  # namespace: mongo-namespace
 data:
   #key -value (database url and server name is name service chứa db)
   database_url: mongo-service
