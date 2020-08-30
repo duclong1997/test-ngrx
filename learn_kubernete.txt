@@ -31,4 +31,26 @@ service:
 -check các service: kubectl get services
 -xem chi tiết service: kubectl describe service name-service
 
-namespace:
+namespace: là khu vục dùng để quản lý các nguồn tài nguyên (deploy, service, pod,...) trong các namespace,
+nó giống như một không gian ảo bên trong của kubernete.
+namespace default là nơi bạn có thể sử dụng , sửa đổi resources nếu như bạn không tạo thêm newspace
+
+lấy ra toàn bộ cac namespace: kubectl get namespace.
+thêm mới namespace: kubectl create namespace name-namespace
+hoặc có thể tạo namespace sử dụng config-map
+
+cách sử dụng namespace:
+-nếu như bạn có một ứng dụng phức tạp, có nhiều deploy, replicaset,....
+-nếu như có nhiều team cùng tạo ra ứng dụng giống nhau trong cùng 1 namespace nhưng chúng khác nhau về config
+-chia sẻ tài nguyên như nginx, db, elasticsearch,.. với những deploy khác nhau như staging or deployment
+-giớI hạn quyền truy cập, tài nguyên ở trên namespace.
+
+không thể truy cập 1 cách trực tiếp từ namespace này sang namespace khác (cần phải có config map mới có thể thực hiện truy cập được)
+có một vài thành phần (components) không thể được tạo trong namespace (ví dụ: volume, node)
+-check chi tiết file config map (-o yaml)
+
+ingress:
+-được sử dụng để có sự bảo mật trong kết nối với (https)
+- giúp cho IP address và port không bị lộ.
+
+check ingress: kubect get ingress

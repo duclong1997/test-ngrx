@@ -1,0 +1,13 @@
+apiVersion: error/v1
+kind: Service
+metadata:
+  # name default service error (required)
+  name: default-http-backend
+spec:
+  selector:
+    app: default-response-app
+  ports:
+    - protocol: TCP
+      # port default service error (required)
+      port: 80
+      targetPort: 8080

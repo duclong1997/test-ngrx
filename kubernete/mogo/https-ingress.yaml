@@ -1,0 +1,26 @@
+apiVersion: tls/v2
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  # config tls (https)
+  tls:
+    - host:
+        - test-tls.com
+      secretName: tls-secret
+  rules:
+    # set domain
+    - host: ingress.com
+      http:
+        # set path for url
+        paths:
+          # multi sub-path
+          # path of ingress
+          - path: /home
+            # được định nghĩa để khi có những request ngoài truy cập vào mà service chưa được tạo hay đinh nghĩa thì trong cluster
+            # nó sẽ get some default-http-backend
+            backend:
+              # name service
+              serviceName: mongo-service
+              # port: 27017 (port of service in service name is mongo-service)
+              servicePort: 27017

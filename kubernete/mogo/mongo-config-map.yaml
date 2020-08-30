@@ -6,5 +6,7 @@ matadata:
   # config namespace
   # namespace: mongo-namespace
 data:
-  #key -value (database url and server name is name service chứa db)
+  # key -value (database url and server name is name service chứa db)
   database_url: mongo-service
+  # muốn truy cập vào một service của một namespace
+  # database_url: <name-service>.<name-namespace>

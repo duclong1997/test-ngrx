@@ -1,0 +1,35 @@
+apiVersion: ingress/v1
+kind: Ingress
+metadata:
+  name: mongo-ingress
+spec:
+  rules:
+    # set domain
+    - host: ingress.com
+      http:
+        # set path for url
+        paths:
+          # multi sub-path
+          # path of ingress
+          - path: /home
+            # được định nghĩa để khi có những request ngoài truy cập vào mà service chưa được tạo hay đinh nghĩa thì trong cluster
+            # nó sẽ get some default-http-backend
+            backend:
+              # name service
+              serviceName: mongo-service
+              # port: 27017 (port of service in service name is mongo-service)
+              servicePort: 27017
+          - path: /db
+            backend:
+              serviceName: mongo-service
+              servicePort: 27017
+    # multi sub-domain
+    - host: ingress-2.com
+      http:
+        paths:
+          # default: '/'
+          - backend:
+              # name service
+              serviceName: mongo-service
+              # port: 27017 (port of service in service name is mongo-service)
+              servicePort: 27017
