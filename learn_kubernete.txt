@@ -54,3 +54,13 @@ ingress:
 - giúp cho IP address và port không bị lộ.
 
 check ingress: kubect get ingress
+
+helm:
+có cặp tính năng chính
+- nó giống như package manager for kubernete. Giúp quản lý những file yml và phân tán chúng ở repository public or private.
+nói 1 cách đơn giản là muốn build 1 hộ thống chúng ta cần rất nhiều file yml và chúng ta sẽ package những file đó lại thành package
+và đặt chúng ở nơi lưu trữ nào đó,và những người khác cũng có thể sử dụng lại package đó thay vì phải tạo lại từ đầu tất cả.
+việc này giúp những người khác tiết kiệm effort.
+- là template engine giúp cho việc viết các image, service hay develop trở nên nhanh, và link động, thông qua bản vẻ đã được thiết kế sẵn.
+nhờ bản vẻ để có thể tạo ra được các image, service, deployment 1 cách nhanh chóng và tránh được sự sai sót hay thiếu xót.
+-cung cấp 1 cách đơn giản để có thể setup replease management.
