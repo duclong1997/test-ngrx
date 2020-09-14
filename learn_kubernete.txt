@@ -64,3 +64,11 @@ việc này giúp những người khác tiết kiệm effort.
 - là template engine giúp cho việc viết các image, service hay develop trở nên nhanh, và link động, thông qua bản vẻ đã được thiết kế sẵn.
 nhờ bản vẻ để có thể tạo ra được các image, service, deployment 1 cách nhanh chóng và tránh được sự sai sót hay thiếu xót.
 -cung cấp 1 cách đơn giản để có thể setup replease management.
+
+pod:
+-là thành phần nhỏ nhất trong kubernate, nó không phải container, pod sẽ thường chứa đựng 1 container chính, nó chỉ có 1 app main run bên trong
+-tất cả các pod đều có unique(duy nhất) ipaddress
+-ip address có thể được tác động đến từ tất cả các pod khác trong cluster.
+nó có thể giúp chúng ta có thể chạy được nhiều app trên cùng 1 host với port khác nhau mà các hệ thống bình thường không làm đƯợc về vấn đề quản lý
+port
+-pod sẽ giống như small machine with owner ipaddress và thường với 1 container chính run trong
