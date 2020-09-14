@@ -72,3 +72,17 @@ pod:
 nó có thể giúp chúng ta có thể chạy được nhiều app trên cùng 1 host với port khác nhau mà các hệ thống bình thường không làm đƯợc về vấn đề quản lý
 port
 -pod sẽ giống như small machine with owner ipaddress và thường với 1 container chính run trong
+- điều đó có nghĩa là 1 server có thể chạy được 10 microservice app và tất cả chúng chạy trên cùng 1 port
+-không phải lo lắng về vấn đề conflict vì tất cả chúng  chạy trên những hệ thống cô lập của chính nó.
+-có thể dễ dàng thay thế các container runtime in kubernate
+
+có thể đặt nhiều container trong 1 pod khi bạn muốn run 1 app phụ hoặc helper trong main app
+ví dụ khi bạn có nhiều db và các db sẽ có sự backup hoặc động bộ với nhau
+- các container giao tiếp với nhau trong 1 pod thông quan các port ( giống với việc bạn run nhiều ứng dụng trên laptop của bạn)
+
+post container thường có trên mỗi pot được gọi là sandbox container
+và nó chỉ có 1 công việc đó là reserve (dự trữ) hoặc la hold (giữ) pots network namespace, nó được chia sẻ bởi toàn bộ container in a pot
+cho nên container pots có thể cho containers để giao tiếp với những cái khác, nếu như có 1 container die, thì nó sẽ được tạo pot và đặt vào ở
+ip address đó, nhưng nếu pot die thì nó sẽ tạo mới 1 pot và với 1 id address khác.
+
+volume:
