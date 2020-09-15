@@ -1,0 +1,44 @@
+apiVersion: v1
+# type PersistentVolume
+kind: PersistentVolume
+metadata:
+  name: pv-name
+# loại đặc thù
+# nơi sẽ được định nghĩa parameter khác nhau and how to storage data
+spec:
+  # cấu hình phần cứng (physic storage)
+  # cấu hình với nfs storage
+  capacity:
+    # cấu hình dung lượng
+    storage: 5Gi
+  volumeMode: Filesystem
+  # cấu hình nó được access những gì (read or write)
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  StorageClassName: show
+  mountOptions:
+    - hard
+    - nfsvers=4.0
+  # storate back-end
+  nsf:
+    path: /dir/path/on/nfs/server
+    server: nfs-server-ip-address
+
+  # sử dụng với google cloud
+  gcePersistentDisk:
+    pdName: my-data-disk
+    fsType: ext4
+
+  # sử dụng với local-storage
+  storageClassName: local-storage
+  local:
+    path: /mnt/disks/ssdl
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+          operator: In
+          values:
+            - example-node

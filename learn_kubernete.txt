@@ -86,3 +86,42 @@ cho nên container pots có thể cho containers để giao tiếp với những
 ip address đó, nhưng nếu pot die thì nó sẽ tạo mới 1 pot và với 1 id address khác.
 
 volume:
+có 3 component:
+persitent volume
+persistent volume claim
+storage class
+
+storage sẽ không phụ thuộc vào pod lifecycle
++persistent colume:
+giống như cluster resource like ram or cpu đưỢc sử dụng để lưu trữ dữ liệu
+cách tạo ra sử dụng bằng file yaml.
+phải lưu trữ từ bộ lưu trữ vật lý như là ổ cứng từ node cluster có thể như AWS, cloud
+kubernate sẽ không quan tâm về storage thực tế mà nó sẽ cho bạn persistent volume componet giống như cách thực để bạn có thể tương tác với
+storage
+cái thứ developer quan tân đó là type of storage your cluster hoặc app.
+viêc quan tâm ở đây đó là phải backup và không để cho nó currupt (gây rối)
+persistent volume không có namespace, out of namespace, chúng là toàn bộ cluster đến namespace
+
++persistent volume claim:
+những ứng dụng khác yêu cầu đến persistent volume ( có nghĩa là các app yêu cầu tương tác đến persistent volume thông qua persistent volume claim)
+khi cấu hình persistent volume claim trong pod thì:
+-pod sẽ request đến pvc
+-sau đó pvc sẽ tìm kiếm 1 persistent thoả mãn trong cluster.
+-với việc như thế này thì pod đã có thể sử dụng actual storage (storage resource) in back-end
+chú ý:
+claim và pod sẽ phải tồn tại trong cùng 1 spacename
+điều đó có nghĩa là claim được gắn kết trong pod
+khi 1 pod bị die thì sẽ có 1 pod mới được thay thế và nó vẫn sẽ access đế same storage và có thể biết được toàn bộ các thay đổi của
+pod trước hoặc container trước
+
+admin thì sẽ cung cấp persistent volume
+developer thì sẽ tạo ra persistent volume claim để có thể kết nối đến persistent volume
+
+storage class:
+tạo ra hoặc cung cấp ra những persistent volume dynermically (linh động), bất cứ khi nào pvc yêu cầu nó.
+đây là cách tạo ra và cung câp volume trong cluster 1 cách tự động.
+luồng thực hiện với storage class:
+-pod sẽ yêu cầu đến pvc (persistent volume claim)
+-pvc sẽ request từ storage class
+-storage class sẽ cung cấp hoặc tạo ra persistent volume, để pvc có thể tìm thấy pv
+-sử dụng provisioner từ bộ lưu trữ thực tế ở dưới back-end

@@ -1,0 +1,17 @@
+apiVersion: v1
+# kind storage class
+kind: StorageClass
+metaData:
+  name: storage-class-name
+# provisioner attribute (main part of the storage class configuration)
+# it will tell kubernete which provisioner to be used for specific storage platform (aws, cloud,...)
+# để tạo ra persitent volume component bên ngoài
+# với mối storage backend sẽ có 1 provisioner
+# internal provisioner: kubernetes.io
+# external provisioner
+provisioner: kubernetes.io/aws-ebs
+# configure parameters for storage we want to request for pv
+parameters:
+  type: iol
+iopsPerGB: "10"
+fsType: ext4

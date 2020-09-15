@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metaData:
+  name: pvc-name
+spec:
+  storageClassName: manual
+  volumeMode: Filesystem
+  # access truy cập vào storage được sử dụng với application
+  accessModes:
+    - ReadWriteOnce
+    # certain storage size of capacity
+  resources:
+    storage: 10Gi
+  # sử dụng với storage class
+  # name của metaData trong file storage-class.yaml
+  # việc sử dụng storage class sẽ tạo ra persistent volume
+  # storageClassName: storage-class-name
