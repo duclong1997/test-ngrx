@@ -125,3 +125,32 @@ luồng thực hiện với storage class:
 -pvc sẽ request từ storage class
 -storage class sẽ cung cấp hoặc tạo ra persistent volume, để pvc có thể tìm thấy pv
 -sử dụng provisioner từ bộ lưu trữ thực tế ở dưới back-end
+
+sự khác nhau giữa docker và kubernete:
+docker:
+-container, isolated environment ( độc lập về môi trưƠng), cho app
+-auto build and develop app by CI
+-is platform for configure, build, and distribute container.
+
+kubernete:
+-thì là 1 cơ sở hạ tầng, chịu trách nhiệm quản lý nhiều container.
+-auto schedule and management of container after container deploy
+-là hệ sinh thái cho việc quản lý các cluster của docker container.
+
+
+docker swarm:
+-dễ dàng install
+-rõ ràng hơn, dễ dàng trong cách sử dụng, nhưng giới hạn về tính năng mang lại.
+-mở rộng thủ công.
+-cần công cụ của bên thứ 3 để giảm sát
+- auto load balancer
+- được tích hợp trong docker CLI
+
+kubernete:
+-phức tạp hơn
+-phực tạp trong quá trình học tập, nhưng đổi lại hệ thống mạnh mẽ hơn.
+-hỗ trọ việc tự động mở rộng
+-building có sự monitor (giám sát)
+- cấu hình load balancer 1 cách tự động.
+-cần học nhiều hơn về tool CLI riêng biết.
+
