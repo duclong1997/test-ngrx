@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-file
+  data:
+    # define name of file
+    # content of file ngăn cách với file name bởi |
+    file-config.config: |
+      log_dest_stdout
+      log_type_all
+      log_timestamp
+      listerner 9001

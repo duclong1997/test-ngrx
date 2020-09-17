@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: deploy-map-name
+  labels:
+    app: deploy-map
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-map
+  template:
+    metadata:
+      labels:
+        app: deploy-map
+    spec:
+      containers:
+        - name: deploy-map-file
+          image: eclipse-mosquitto:1.6.2
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            # name into volumes of configmap
+            - name: config
+              # path do mình định nghĩa nơi sẽ chứa các file của configMap
+              mountPath: /config
+              # name into volumes of secret
+            - name: secret
+              # path do mình đinh nghĩa nơi sẽ chứa các file của secret
+              mountPath: /secret
+              readOnly: true
+      # mount configmap and secret by volumes
+      # volume mount into the pod
+      # mount volume into container
+      volumes:
+        - name: config
+          configMap:
+            # name confgiMap
+            name: config-file
+        - name: secret
+          secret:
+            # name secret
+            secretName: secret-file

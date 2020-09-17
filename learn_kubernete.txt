@@ -154,3 +154,4 @@ kubernete:
 - cấu hình load balancer 1 cách tự động.
 -cần học nhiều hơn về tool CLI riêng biết.
 
+file configmap and secret phải được tạo và tồn tại trước pod start in kubernete
