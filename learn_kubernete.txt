@@ -155,3 +155,37 @@ kubernete:
 -cần học nhiều hơn về tool CLI riêng biết.
 
 file configmap and secret phải được tạo và tồn tại trước pod start in kubernete
+
+
+StatefulSet:
+nó là thành phần criminale được sử dụng chuyên dụng cho statefull application (database, elasticsearch, mongoDB)
+nó có thể được replica (tạo ra bản sao)
+nhưng bảo sao đó không thể được tạo ra, xoá đi ở tại 1 thời điểm.
+không thể random id address.
+replica pods không thể đinh danh (identity)
+sticky identity (xác định, gán) định danh cho mỗi pod
+chúng được tạo ra từ same specification, nhưng không thể interchangable (chuyển đổi)
+nhứng identity được định danh cố định qua bất cứ sự thay đổi re-scheduling. (có nghĩa là 1 pod bị die thì pod mới được thay
+thế thì pod đó vẫn giữ identity đó)
+khi replica thì data base sẽ được clone ra 1 database mới với data giống nhau.
+-Nhưng nếu bạn cho phép 2 instance không có sự phụ thuộc tác động (read and write) cùng tác động vào same data thì sẽ
+gây ra sự mâu thuẫn trong dữ liệu mà gây ra sự bất đồng bộ hệ thống và data.
+để giải quyết vấn đề này thì sẽ chỉ có 1 poll (cái đầu) đƯợc phép write and read vào db và những instance khác thì chỉ đƯợc
+phép read từ same data.
+-pot đươc phép write in db được gọi là master và những pot khác được gọi là slayer.
+những pot này không được sử dụng nơi lưu trữ vật lý giống nhau nhưng chúng lại sử dụng same data.
+mỗi chúng sẽ lại có 1 relica storage có thẻ truy cập cho chính nó. Điều đó có nghĩa là mỗi pot ử bất cứ thời điểm nào sẽ có 1
+same data với những pot khác. để có thể đạt được điều đó thì cần có sự liên tục đồng bộ data
+master là pot duy nhất cho phép sự thay đổi data và các slayer sẽ cần biết đến mỗi sự thay đổi,
+chúng sẽ thực hiện update data storage, được cập nhật cho next query request
+nguyên tắc: khi master thực hiện change data thì tất cả các slayer sẽ đượC cập nhật storage của nó và sẽ giữ sự động bộ
+và chắc chắn rằng mỗi pod sẽ có data giống nhau.
+khi có 1 slave mới thì nó sẽ được lấy ở temporary storage
+với stemporary thì dữ liệu sẽ không được cố đỊnh, bởi vì data của nó được nhận dữ liệu bản sao giữa các pots
+nhưng nếu toàn bộ pots die thì dữ liệu cũng sẽ mất
+-best practice cho việc sử dụng data persistence đổi với stateful applications
+nếu như mất data thì sẽ không truy cập đó là trường hợp đa số trong ứng dụng db.
+persistent storage data sẽ được tồn tại nếu như toàn bộ các pod die hoặc nếu như bạn xoá thành công stateful set component
+và toàn bộ pod sẽ được clear. toàn bộ persistent và data sẽ được đảm bảo, ở lại. Bởi vì persistent volume lifecycle đã bị mất
+kết nối đến lifecycle của các component khác như deplyment or stateful
+
